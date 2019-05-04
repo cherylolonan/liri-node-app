@@ -10,9 +10,10 @@ var command = process.argv[2];
 var searchValue = "";
 
 // Puts together the search value into one string
-for (var i = 3; i < process.argv.length; i++) {
-    searchValue += process.argv[i] + " ";
-};
+// for (var i = 3; i < process.argv.length; i++) {
+    searchValue += process.argv.slice(3).join(" ");
+    //process.argv.slice(2).join(" ");
+// };
 
 // Error Functions 
 function errorFunction(respError) {
@@ -32,26 +33,41 @@ function searchConcert(searchValue) {
     }
 
     var queryUrl = "https://rest.bandsintown.com/artists/" + searchValue + "/events?app_id=codingbootcamp";
+    
+    // This line is just to help us debug against the actual URL.
+    console.log(queryUrl);
+    
+    axios.get(queryUrl).then(
+      function(response) {
+        console.log(response.data[0]);
+        console.log("\n++++ BandsInTown Search Results ++++\n");
+        console.log("Name of Venue: " + response.data[0].venue.name);
+        console.log("Venue Location: " + response.data[0].venue.city);
+        console.log("Date of Event: " + response.data[0].datetime);
+      }
+    );
 
-    request(queryUrl, function(respError, response, body) {
+    // var queryUrl = "https://rest.bandsintown.com/artists/" + searchValue + "/events?app_id=codingbootcamp";
 
-        errorFunction();
+    // request(queryUrl, function(respError, response, body) {
 
-        if (JSON.parse(body).Error == 'Concert Information not found!' ) {
+    //     errorFunction();
 
-            console.log("\nThe artist " + searchValue + " could not be found. Please check your spelling and try again.\n")
+    //     if (JSON.parse(body).Error == 'Concert Information not found!' ) {
+
+    //         console.log("\nThe artist " + searchValue + " could not be found. Please check your spelling and try again.\n")
         
-        } else {
+    //     } else {
 
-            concertBody = JSON.parse(body);
+    //         concertBody = JSON.parse(body);
+    //         console.log(body);
+    //         console.log("\n++++ BandsInTown Search Results ++++\n");
+    //         console.log("Name of Venue: " + concertBody.venue);
+    //         console.log("Venue Location: " + concertBody.location);
+    //         console.log("Date of Event: " + concertBody.dateOfEvent);
 
-            console.log("\n++++ BandsInTown Search Results ++++\n");
-            console.log("Name of Venue: " + concertBody.venue);
-            console.log("Venue Location: " + concertBody.location);
-            console.log("Date of Event: " + concertBody.dateOfEvent);
-
-            }
-        });      
+    //         }
+    //     });      
     };
 
 
