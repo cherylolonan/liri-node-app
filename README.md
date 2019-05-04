@@ -125,13 +125,13 @@ require("dotenv").config();
 9. Make it so liri.js can take in one of the following commands:
 
    * `concert-this`
-   ![alt text]()
+   ![alt text](images/concert-this.jpg)
 
    * `spotify-this-song`
-   <img src = "images\spotify-this-song.jpg>
+   ![alt text](images/spotify-this-song.jpg)
 
    * `movie-this`
-   <img src = "images\movie-this.jpg>
+   ![alt text](images/movie-this.jpg)
 
    * `do-what-it-says`
 
