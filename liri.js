@@ -181,7 +181,7 @@ function randomSearch() {
 
     fs.readFile("random.txt", "utf8", function(respError, data) {
 
-        var randomArray = data.split(", ");
+        var randomArray = data.split(",");
 
         errorFunction();
 

@@ -134,6 +134,7 @@ require("dotenv").config();
    ![alt text](images/movie-this.JPG)
 
    * `do-what-it-says`
+   ![alt text](images/do-what-it-says.JPG)
 
 ### What Each Command Should Do
 
